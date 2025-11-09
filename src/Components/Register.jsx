@@ -9,8 +9,8 @@ import { Link } from 'react-router';
 function Register() {
     // use formData object to maintain the state of the form fields
     const [formData, setFormData] = useState({
-        fname: "",
-        lname:"",
+        firstName: "",
+        lastName:"",
         email: "",
         password: "",
         confirmPassword: "",
@@ -41,8 +41,8 @@ function Register() {
                 <div className="mb-3">
                     <input
                         type="text"
-                        id="fname"
-                        name="fname"
+                        id="firstName"
+                        name="firstName"
                         placeholder="First Name"
                         value={formData.nfame}
                         onChange={handleChange}
@@ -52,8 +52,8 @@ function Register() {
                     
                     <input
                         type="text"
-                        id="lname"
-                        name="lname"
+                        id="lastName"
+                        name="lastName"
                         placeholder="Last Name"
                         value={formData.lname}
                         onChange={handleChange}

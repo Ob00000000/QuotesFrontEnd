@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react";
-import { getAllQuotes } from "../services/users";
-import { Link } from "react-router";
+import { getAllQuotesbyId } from "../services/users";
+import { useAuth } from "../Provider/AuthProvider";
 
-const Dashboard = () => {
+
+const MyQuotes = () => {
    const [quote, setQuote] = useState([])
+   const { user, setUser } = useAuth();
 
     useEffect(() => {
         async function fetchQuotes() {
             try {
-                const fetch = await getAllQuotes();
+                const fetch = await getAllQuotesbyId({user});
                 // ensure we always set an array
                 setQuote(fetch);
             } catch (err) {
@@ -19,12 +21,11 @@ const Dashboard = () => {
         fetchQuotes();
 
     }, [])
-
+    
 
   return (
     <div className='container'>
         <h1>Quotes around the world</h1>
-        <div>  <Link to="/favpage" > Fav  </Link> </div>
         <table className="table table-bordered col-6 ">
             <tbody>
                 {quote.map((q) => (
@@ -40,6 +41,6 @@ const Dashboard = () => {
 }
 
 
-export default Dashboard;
+export default MyQuotes;
 
 

@@ -8,8 +8,11 @@ import { useAuth } from "../Provider/AuthProvider";
 function UpdateProfile() {
     // use formData object to maintain the state of the form fields
     const [formData, setFormData] = useState({
-        name: "",
-        mobile: "",
+        firstName: "",
+        lastName: "",
+        email:"",
+        address:"",
+        phoneno: "",
     });
     const navigate = useNavigate();
     const { user, setUser } = useAuth();
@@ -26,7 +29,7 @@ function UpdateProfile() {
         try {
             // update logic here
             const message = await updateUserProfile(formData)
-            setUser({...user, name: formData.name, mobile: formData.mobile})
+            setUser({...user,firstName: formData.firstName, lastName: formData.lastName, email: formData.email, address: formData.address, phoneno: formData.phoneno})
             // also update in sessionStorage ...
             toast.success(message)
         }
@@ -40,32 +43,62 @@ function UpdateProfile() {
     };
 
     return (
-        <div className="container">
+        <div className="container text-center">
             <h2>Profile</h2>
             <form onSubmit={handleUpdate}>
                 <div className="mb-3">
-                    <label htmlFor="name" className="form-label">
-                        name
-                    </label>
                     <input
-                        type="name"
+                        type="text"
+                        id="firstName"
                         className="form-control"
-                        id="name"
-                        name="name"
-                        value={formData.name}
+                        name="firstName"
+                        placeholder="First Name"
+                        value={formData.nfame}
                         onChange={handleChange}
                     />
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="mobile" className="form-label">
-                        mobile
-                    </label>
+                    
                     <input
-                        type="mobile"
+                        type="text"
+                        id="lastName"
                         className="form-control"
-                        id="mobile"
-                        name="mobile"
-                        value={formData.mobile}
+                        name="lastName"
+                        placeholder="Last Name"
+                        value={formData.lname}
+                        onChange={handleChange}
+                    />
+                </div>
+                <div className="mb-3">
+                    <input
+                        type="email"
+                        id="email"
+                        className="form-control"
+                        name="email"
+                        placeholder="Email"
+                        value={formData.email}
+                        onChange={handleChange}
+                    />
+                </div>
+                <div className="mb-3">
+                    <input
+                        type="text"
+                        id="address"
+                        className="form-control"
+                        name="address"
+                        placeholder="Address"
+                        value={formData.address}
+                        onChange={handleChange}
+                    />
+                </div>
+                <div className="mb-3">
+                    <input
+                        type="text"
+                        id="phoneno"
+                        className="form-control"
+                        name="phoneno"
+                        placeholder="Phone no"
+                        value={formData.confirmPassword}
                         onChange={handleChange}
                     />
                 </div>

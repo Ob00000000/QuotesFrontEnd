@@ -9,6 +9,7 @@ import { useAuth } from './../Provider/AuthProvider';
 
 function Login() {
     // use formData object to maintain the state of the form fields
+  
     const [formData, setFormData] = useState({
         email: "",
         password: "",
@@ -18,6 +19,7 @@ function Login() {
 
     const handleLogin = async (e) => {
         e.preventDefault(); 
+          debugger;
         try {
             if (!formData.email || !formData.password) {
                 throw new Error("Please enter both email and password")
@@ -47,6 +49,7 @@ function Login() {
             sessionStorage.setItem("user", JSON.stringify(user))
             // add logged in user in AuthContext
             setUser(user);
+            console.log(user)
             toast.success("Welcome, " + (user.firstName || user.name))
             navigate("/user/dashboard");
         }

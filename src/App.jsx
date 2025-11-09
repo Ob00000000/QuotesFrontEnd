@@ -8,6 +8,13 @@ import AuthProvider from "./Provider/AuthProvider";
 import Dashboard from './Components/Dashboard';
 import UpdateProfile from './Components/UpdateProfile';
 import NotFound from './Components/NotFound';
+import MyQuotes from "./Components/MyQuotes";
+import FavPage from "./Components/favpage";
+
+
+
+
+
 
 
 function App() {
@@ -21,6 +28,7 @@ function App() {
             <Route path="/login" element=<Login/> />
             <Route path="/register" element=<Register/> />
             <Route path="/logout" element=<Logout/> />
+            <Route path="/favpage" element=<FavPage/> />
             <Route path="/user" element=<UserLayout/> >
               <Route index element=<ProtectedRoute>
                 <Dashboard/>
@@ -28,18 +36,14 @@ function App() {
               <Route path="dashboard" element=<ProtectedRoute>
                 <Dashboard/>
               </ProtectedRoute> />
-              {/* <Route path="foods" element=<ProtectedRoute>
-                <FoodGallery/>
+              <Route path="myquote" element=<ProtectedRoute>
+                <UpdateProfile/>
               </ProtectedRoute> />
-              <Route path="addfood" element=<ProtectedRoute>
-                <FoodItemForm/>
-              </ProtectedRoute> />
-              <Route path="editfood" element=<ProtectedRoute>
-                <FoodItemUpdateForm/>
-              </ProtectedRoute> /> */}
                <Route path="profile" element=<ProtectedRoute>
                 <UpdateProfile/>
               </ProtectedRoute> />
+
+
             </Route>
             <Route path="*" element=<NotFound/> />
           </Routes>
