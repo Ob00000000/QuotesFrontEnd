@@ -3,7 +3,7 @@ import axios from 'axios'
 
 export async function findUserByCredentials(cred) {
     // cred object {email, password}
-    const url = BASE_URL + "/authenticate"
+    const url = BASE_URL + "/signin"
     const response = await axios.post(url, cred)
     if(response.status === 200) {
         const resp = response.data
